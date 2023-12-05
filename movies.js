@@ -30,7 +30,7 @@ function createPoster() {
             console.log(posterData);
             // Handle the poster data as needed
         })
-        .catch(error => console.error(error));
+        .catch(error => console.log(error));
 }
 
     generateMovies()
