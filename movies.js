@@ -1,7 +1,12 @@
 'use strict'
-function generateMovies(){
-    const loader = document.getElementsByClassName(".spinner")
 
+function generateMovies() {
+
+    const loader = document.getElementsByClassName("spinner")[0];
+
+    const delay = 5000; // delay time in milliseconds
+
+    loader.style.display = "block"
 
     fetch('http://localhost:3000/movies')
 
@@ -9,13 +14,24 @@ function generateMovies(){
         .then(movies => {
             console.log(movies)
         })
-        .then(loader => {
-            loader.style.display = "block"
-            loader.style.display = "none"
-
-    })
-
         .catch(error => console.error(error));
 
-    console.log(generateMovies())
+    setTimeout(() => {
+        loader.style.display = "none";
+    }, delay);
 }
+function createPoster() {
+    const movieTitle = ; // Replace 'your_movie_title' with the actual movie title
+    const posterUrl = `http://img.omdbapi.com/?apikey=${MOVIE_API_KEY}&t=${movieTitle}`;
+
+    fetch(posterUrl)
+        .then(response => response.json())
+        .then(posterData => {
+            console.log(posterData);
+            // Handle the poster data as needed
+        })
+        .catch(error => console.error(error));
+}
+
+    generateMovies()
+    createPoster()
