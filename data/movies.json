@@ -4,6 +4,51 @@
       "id": 1,
       "title": "Shrek",
       "rating": 5
+    },
+    {
+      "id": 2,
+      "title": "The Princess Bride",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "title": "Inception",
+      "rating": 4
+    },
+    {
+      "id": 4,
+      "title": "The Dark Knight",
+      "rating": 5
+    },
+    {
+      "id": 5,
+      "title": "Soul Plane",
+      "rating": 3
+    },
+    {
+      "id": 6,
+      "title": "The Room",
+      "rating": 2
+    },
+    {
+      "id": 7,
+      "title": "The Godfather",
+      "rating": 5
+    },
+    {
+      "id": 8,
+      "title": "Shawshank Redemption",
+      "rating": 4
+    },
+    {
+      "id": 9,
+      "title": "Rubber",
+      "rating": 1
+    },
+    {
+      "id": 10,
+      "title": "Final Destination",
+      "rating": 2
     }
   ]
 }
