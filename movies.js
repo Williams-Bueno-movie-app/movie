@@ -21,7 +21,7 @@ function generateMovies() {
     }, delay);
 }
 function createPoster() {
-    const movieTitle = ; // Replace 'your_movie_title' with the actual movie title
+    const movieTitle = ""; // Replace 'your_movie_title' with the actual movie title
     const posterUrl = `http://img.omdbapi.com/?apikey=${MOVIE_API_KEY}&t=${movieTitle}`;
 
     fetch(posterUrl)
