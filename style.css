@@ -1,3 +1,5 @@
+
+
 .spinner {
     position: fixed;
     margin: 10%;
@@ -17,4 +19,43 @@
         transform: rotate(360deg);
     }
 
+}
+body {
+    background:#1e1e26;
+}
+
+.mypopcorn {
+    padding:20px;
+}
+
+.popcorn{
+    margin: auto;
+    position: absolute;
+    width:300px;
+    top: 30%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+circle#popcrncirlce {
+    fill: #FFE477;
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    -webkit-animation: rotate 1.5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+    animation: rotate 1.5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+}
+
+
+
+@-webkit-keyframes rotate {
+    50% {
+        -webkit-transform: translate(0px, 100px);
+    }
+}
+
+@keyframes rotate {
+    50% {
+        transform: translate(0px, 100px);
+    }
 }
