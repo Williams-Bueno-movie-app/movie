@@ -69,7 +69,7 @@ generateMovies();
         // Retrieve values from the form
         let title = document.getElementById('title').value;
         let description = document.getElementById('description').value;
-        let year = document.getElementById('year').value;
+        let rating = document.getElementById('rating').value;
 
         // Create a new movie card element
         let movieContainer = document.getElementById('movie-container');
@@ -80,7 +80,7 @@ generateMovies();
             <div class="card-body">
                 <h5 class="card-title">${title}</h5>
                 <p class="card-text">${description}</p>
-                <p class="card-text">Year: ${year}</p>
+                <p class="card-text">Rating: ${rating}</p>
                 <button class="btn btn-danger" onclick="deleteMovie(this)">Delete</button>
             </div>
         </div>
@@ -96,37 +96,3 @@ generateMovies();
         movieCard.remove();
     }
 
-async function createMovie(movie) {
-    try {
-        const url = 'http://localhost:3000/movies';
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(movie)
-        };
-        const response = await fetch(url, options);
-        const newMovie = await response.json();
-        return newMovie;
-    } catch (error) {
-        console.error(error);
-        throw error; // Re-throw the error to handle it outside
-    }
-}
-
-// Example of usage
-const newMovieTitleAdd = document.querySelector("#title")
-const forForm = newMovieTitleAdd.value
-console.log(forForm)
-const newMovieYearAdd = document.querySelector("#year")
-const forForm2 = newMovieYearAdd.value
-console.log(forForm2)
-
-
-createMovie(newMovieData)
-    .then(newMovie => {
-        console.log('New movie added:', newMovie);
-        // Update your UI or perform additional actions as needed
-    })
-    .catch(error => console.error('Error creating movie:', error));
