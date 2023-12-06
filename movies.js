@@ -1,26 +1,14 @@
 'use strict';
 
 function generateMovies() {
-    const loader = document.getElementsByClassName("popcorn")[0];
-    const movieListContainer = document.getElementById("movieList"); // Assuming you have a container with id="movieList"
+    const loader = document.querySelector(".popcorn");
+    const movieListContainer = document.getElementById("movieList");
 
-    const delay = 5000; // delay time in milliseconds
+    const delay = 2000; // delay time in milliseconds
 
-    loader.style.display = "block";
-
-    fetch('http://localhost:3000/movies')
-        .then(response => response.json())
-        .then(movies => {
-            // Assuming movies is an array of objects with properties like 'title' and 'description'
-            renderMovies(movies);
-        })
-        .catch(error => console.error(error))
-        .finally(() => {
-            // Ensure the loader is hidden even in case of an error
-            setTimeout(() => {
-                loader.style.display = "none";
-            }, delay);
-        });
+    setTimeout(() => {
+        loader.style.display = "none";
+    }, delay);
 
     function renderMovies(movies) {
         // Clear existing content
@@ -30,16 +18,115 @@ function generateMovies() {
         movies.forEach(movie => {
             const movieElement = document.createElement('div');
             movieElement.innerHTML = `
-                <h2>${movie.title}</h2>
-                <p>${movie.description}</p>
+                <h2>${movie.Title}</h2>
+                <p>${movie.Year}</p>
+                <img src="${movie.Poster}" alt="${movie.Title} Poster">
                 <!-- Add more details as needed -->
-
                 <hr>
             `;
             movieListContainer.appendChild(movieElement);
         });
     }
+
+
+
+    document.getElementById('movieForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const movieValue = document.getElementById('movieInput').value;
+
+        if (movieValue.trim() !== '') {
+
+            const apiUrl = `http://www.omdbapi.com/?apikey=${MOVIES_API_KEY}&s=${encodeURIComponent(movieValue)}`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Process the response data
+                    if (data.Response === 'True') {
+                        // Movies found
+                        renderMovies(data.Search);
+                        // console.log(data.Search[0].Poster)
+                    } else {
+                        // No movies found or an error occurred
+                        console.error(data.Error);
+                    }
+                })
+                .catch(error => console.error('Error fetching data:', error))
+
+
+        } else
+    {
+        // Handle the case when the input is empty
+        console.error('Please enter a movie title');
+    }
+    });
 }
 
 generateMovies();
 
+    function addMovie() {
+        // Retrieve values from the form
+        let title = document.getElementById('title').value;
+        let description = document.getElementById('description').value;
+        let year = document.getElementById('year').value;
+
+        // Create a new movie card element
+        let movieContainer = document.getElementById('movie-container');
+        let newMovieCard = document.createElement('div');
+        newMovieCard.classList.add('col-md-4');
+        newMovieCard.innerHTML = `
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">${title}</h5>
+                <p class="card-text">${description}</p>
+                <p class="card-text">Year: ${year}</p>
+                <button class="btn btn-danger" onclick="deleteMovie(this)">Delete</button>
+            </div>
+        </div>
+    `;
+
+        // Append the new movie card to the movie container
+        movieContainer.appendChild(newMovieCard);
+    }
+
+    function deleteMovie(button) {
+        // Traverse the DOM to remove the entire movie card
+        let movieCard = button.parentNode.parentNode.parentNode; // Assuming structure: button -> div.card-body -> div.card -> movie card itself
+        movieCard.remove();
+    }
+
+async function createMovie(movie) {
+    try {
+        const url = 'http://localhost:3000/movies';
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(movie)
+        };
+        const response = await fetch(url, options);
+        const newMovie = await response.json();
+        return newMovie;
+    } catch (error) {
+        console.error(error);
+        throw error; // Re-throw the error to handle it outside
+    }
+}
+
+// Example of usage
+const newMovieTitleAdd = document.querySelector("#title")
+const forForm = newMovieTitleAdd.value
+console.log(forForm)
+const newMovieYearAdd = document.querySelector("#year")
+const forForm2 = newMovieYearAdd.value
+console.log(forForm2)
+
+
+createMovie(newMovieData)
+    .then(newMovie => {
+        console.log('New movie added:', newMovie);
+        // Update your UI or perform additional actions as needed
+    })
+    .catch(error => console.error('Error creating movie:', error));
