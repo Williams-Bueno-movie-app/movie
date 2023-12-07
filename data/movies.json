@@ -3,64 +3,62 @@
     {
       "id": 1,
       "title": "Shrek",
-      "rating": 5
+      "rating": 5,
+      "poster":"https://m.media-amazon.com/images/M/MV5BOGZhM2FhNTItODAzNi00YjA0LWEyN2UtNjJlYWQzYzU1MDg5L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
     },
     {
       "id": 2,
       "title": "The Princess Bride",
-      "rating": 5
+      "rating": 5,
+      "poster": "https://m.media-amazon.com/images/M/MV5BYzdiOTVjZmQtNjAyNy00YjA2LTk5ZTAtNmJkMGQ5N2RmNjUxXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg"
     },
     {
       "id": 3,
       "title": "Inception",
-      "rating": 4
+      "rating": 4,
+      "poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg"
     },
     {
       "id": 4,
       "title": "The Dark Knight",
-      "rating": 5
+      "rating": 5,
+      "poster": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg"
     },
     {
       "id": 5,
       "title": "Soul Plane",
-      "rating": 3
+      "rating": 3,
+      "poster": "https://m.media-amazon.com/images/M/MV5BMTc5NDcxNjg5N15BMl5BanBnXkFtZTcwMDIyNzczMw@@._V1_SX300.jpg"
     },
     {
       "id": 6,
       "title": "The Room",
-      "rating": 2
+      "rating": 2,
+      "poster": "https://m.media-amazon.com/images/M/MV5BN2IwYzc4MjEtMzJlMS00MDJlLTkzNDAtN2E4NGNkZjg0MDgxXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SX300.jpg"
     },
     {
       "id": 7,
       "title": "The Godfather",
-      "rating": 5
+      "rating": 5,
+      "poster": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
     },
     {
       "id": 8,
       "title": "Shawshank Redemption",
-      "rating": 4
+      "rating": 4,
+      "poster": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg"
     },
     {
       "id": 9,
       "title": "Rubber",
-      "rating": 1
+      "rating": 1,
+      "poster": "https://m.media-amazon.com/images/M/MV5BMTJmZDBlYzctZTY3OS00OTYyLWIxZWEtZmRmMWRmOTA1NDI0XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
     },
     {
       "id": 10,
       "title": "Final Destination",
-      "rating": 2
-    },
-    {
-      "title": "sjsnd",
-      "description": "fdkjfn",
-      "year": "2011",
-      "id": 11
-    },
-    {
-      "title": "wdkja",
-      "description": "sdn sd",
-      "year": "2013",
-      "id": 12
+      "rating": 2,
+      "poster": "https://m.media-amazon.com/images/M/MV5BZTI0NGM2OGYtNzVmMi00NGQ2LTk2MDAtN2RmYjIzMGRkZGYxXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
     }
   ]
 }

@@ -1,142 +1,116 @@
-'use strict';
 
-function generateMovies() {
     const loader = document.querySelector(".popcorn");
     const movieListContainer = document.getElementById("movieList");
-
-    const delay = 2000; // delay time in milliseconds
+    let searchStop = document.querySelector("#movieForm")
+        searchStop.style.display ="none";
+    let movieFormBlock = document.querySelector("#add-movie-form")
+        movieFormBlock.style.display = "none";
+    const delay = 11000; // delay time in milliseconds
 
     setTimeout(() => {
         loader.style.display = "none";
     }, delay);
 
-    function renderMovies(movies) {
-        // Clear existing content
-        movieListContainer.innerHTML = '';
 
-        // Iterate through movies and create HTML elements
-        movies.forEach(movie => {
-            const movieElement = document.createElement('div');
-            movieElement.innerHTML = `
-                <h2>${movie.Title}</h2>
-                <p>${movie.Year}</p>
-                <img src="${movie.Poster}" alt="${movie.Title} Poster">
-                <!-- Add more details as needed -->
-                <hr>
-            `;
-            movieListContainer.appendChild(movieElement);
-        });
+    async function searchMovie(searchValue) {
+        try {
+            const movieData = await fetch("http://localhost:3000/movies");
+            const movies = await movieData.json();
+
+            const filteredMovies = movies.filter(function (movie) {
+                return movie.title.toLowerCase().includes(searchValue.toLowerCase());
+            });
+
+            return filteredMovies;
+        } catch (error) {
+            console.error("Error searching movies:", error);
+            throw error; // Re-throw the error to handle it outside
+        }
     }
 
-    document.getElementById('movieForm').addEventListener('submit', function (event) {
-        event.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+    // const loadingElement = document.getElementById("loading");
+    const movieListElement = document.getElementById("movies-list");
+    const addMovieForm = document.getElementById("add-movie-form");
 
-        const movieValue = document.getElementById('movieInput').value;
-
-        if (movieValue.trim() !== '') {
-
-            const apiUrl = `http://www.omdbapi.com/?apikey=${MOVIES_API_KEY}&s=${encodeURIComponent(movieValue)}`;
-
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    // Process the response data
-                    if (data.Response === 'True') {
-                        // Movies found
-                        renderMovies(data.Search);
-                        // console.log(data.Search[0].Poster)
-                    } else {
-                        // No movies found or an error occurred
-                        console.error(data.Error);
-                    }
-                })
-                .catch(error => console.error('Error fetching data:', error))
-
-        } else {
-            // Handle the case when the input is empty
-            console.error('Please enter a movie title');
+    // Function to fetch movies
+    const fetchMovies = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/movies");
+            const movies = await response.json();
+            return movies;
+        } catch (error) {
+            console.error("Error fetching movies:", error);
+            throw error; // Re-throw the error to handle it outside
         }
-    });
-}
-
-generateMovies();
-
-function addMovie() {
-    // Retrieve values from the form
-    let title = document.getElementById('title').value;
-    let description = document.getElementById('description').value;
-    let year = document.getElementById('year').value;
-
-    // Create a new movie card element
-    let movieContainer = document.getElementById('movie-container');
-    let newMovieCard = document.createElement('div');
-    newMovieCard.classList.add('col-md-4');
-    newMovieCard.innerHTML = `
-        <div class="card mb-4">
-            <div class="card-body">
-                <h5 class="card-title">${title}</h5>
-                <p class="card-text">${description}</p>
-                <p class="card-text">Year: ${year}</p>
-                <button class="btn btn-danger" onclick="deleteMovie(this)">Delete</button>
-            </div>
-        </div>
-    `;
-
-    // Append the new movie card to the movie container
-    movieContainer.appendChild(newMovieCard);
-
-    // Example of usage
-    const newMovieData = {
-        title: title,
-        description: description,
-        year: year
     };
 
-    createMovie(newMovieData)
-        .then(newMovie => {
-            console.log('New movie added:', newMovie);
-            // Update your UI or perform additional actions as needed
-        })
-        .catch(error => console.error('Error creating movie:', error));
-}
+    // Function to render movies
+    const renderMovies = (movies) => {
+        movieListElement.innerHTML = "";
+        movies.forEach((movie) => {
+            const listItem = document.createElement("li");
+            listItem.innerHTML = `
+                <span>${movie.title} - Rating: ${movie.rating}</span> 
+                <img src="${movie.poster}" alt="poster">
+                <button onclick="editMovie(${movie.id})">Edit</button>
+                <button onclick="deleteMovie(${movie.id})">Delete</button>`;
+            movieListElement.appendChild(listItem);
+        });
+    };
 
-// function deleteMovie(button) {
-//     // Traverse the DOM to remove the entire movie card
-//     let movieCard = button.parentNode.parentNode.parentNode; // Assuming structure: button -> div.card-body -> div.card -> movie card itself
-//     movieCard.remove();
-// }
+    // Function to handle form submission
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
 
-async function createMovie(movie) {
-    try {
-        const url = 'http://localhost:3000/movies';
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(movie)
-        };
-        const response = await fetch(url, options);
-        const newMovie = await response.json();
-        // console.log(newMovie)
-        return newMovie;
-    } catch (error) {
-        console.error(error);
-        throw error; // Re-throw the error to handle it outside
-    }
-}
+        const title = document.getElementById("title").value;
+        const rating = document.getElementById("rating").value;
+        const poster = document.getElementById("poster").value; // Assuming you have an input field for the poster
 
-function deleteMovie(button) {
-    let movieCard = button.parentNode.parentNode.parentNode;
-    let movieTitle = movieCard.querySelector('.card-title').innerText;
+        try {
+            const response = await fetch("http://localhost:3000/movies", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ title, rating, poster }),
+            });
 
-    // Example of usage
-    deleteMovieOnServer(movieTitle)
-        .then(deletedMovie => {
-            console.log('Movie deleted:', deletedMovie);
-            // Remove the movie card from the UI
-            movieCard.remove();
-        })
-        .catch(error => console.error('Error deleting movie:', error));
-}
+            const newMovie = await response.json();
+            // Fetch and render updated movie list
+            const movies = await fetchMovies();
+            renderMovies(movies);
+        } catch (error) {
+            console.error("Error adding movie:", error);
+        }
+    };
+
+    // ... (other functions remain unchanged)
+
+    // Event listeners
+    addMovieForm.addEventListener("submit", handleFormSubmit);
+
+    // Initial setup
+    const init = async () => {
+        try {
+            // Start JSON server
+            await fetch("http://localhost:3000/movies");
+            // Fetch movies and render
+            const movies = await fetchMovies();
+            renderMovies(movies);
+            // Remove loading message
+            loader.style.display = "none";
+            searchStop.style.display = "block";
+            movieFormBlock.style.display = "block";
+
+        } catch (error) {
+            console.error("Error initializing app:", error);
+        }
+    };
+
+    // Event listeners
+    addMovieForm.addEventListener("submit", handleFormSubmit);
+    // Initialize app
+    init();
+});
 

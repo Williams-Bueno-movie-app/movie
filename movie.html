@@ -20,47 +20,17 @@
         <!-- Movie Cards will be added here -->
     </div>
 
-    <div class="row mt-3">
-        <div class="col">
-            <form id="movie-form">
-                <div class="mb-3">
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" name="title">
-                </div>
-                <div class="mb-3">
-                    <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" id="description" name="description"></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="year" class="form-label">Year</label>
-                    <input type="number" class="form-control" id="year" name="year">
-                </div>
-                <button type="button" class="btn btn-primary mr-2" onclick="addMovie()">Add Movie</button>
-            </form>
-        </div>
-    </div>
-</div>
 
-
-<h1>Top 3</h1>
-<div class="container">
-   <div class ="row">
-        <div class="movie1 col-4">
-            <img src="https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
-                 alt="The Matrix">
-        </div>
-
-        <div class="movie2 col-4">
-            <img src="https://m.media-amazon.com/images/M/MV5BYzdiOTVjZmQtNjAyNy00YjA2LTk5ZTAtNmJkMGQ5N2RmNjUxXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg"
-                 alt="The Princess Bride">
-        </div>
-
-        <div class="movie3 col-4">
-            <img src="https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg"
-
-                 alt="The Avengers">
-        </div>
-    </div>
+<div id="app">
+    <p id="loading"></p>
+    <ul id="movies-list"></ul>
+    <form id="add-movie-form">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        <label for="rating">Rating:</label>
+        <input type="number" id="rating" name="rating" min="1" max="10" required>
+        <button type="submit">Add Movie</button>
+    </form>
 </div>
 
 
