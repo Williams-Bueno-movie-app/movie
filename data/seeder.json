@@ -32,9 +32,15 @@
     },
     {
       "id": 7,
-      "title": "Godfather",
-      "rating": "5",
+      "title": "The Godfather",
+      "rating": 5,
       "poster": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
+    },
+    {
+      "id": 8,
+      "title": "Shawshank Redemption",
+      "rating": 4,
+      "poster": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg"
     },
     {
       "id": 9,
@@ -43,10 +49,10 @@
       "poster": "https://m.media-amazon.com/images/M/MV5BMTJmZDBlYzctZTY3OS00OTYyLWIxZWEtZmRmMWRmOTA1NDI0XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
     },
     {
-      "title": "Avengers: Endgame",
-      "rating": "5",
-      "poster": "https://www.movieposters.com/cdn/shop/products/108b520c55e3c9760f77a06110d6a73b_480x.progressive.jpg?v=1573652543",
-      "id": 11
+      "id": 10,
+      "title": "Final Destination",
+      "rating": 2,
+      "poster": "https://m.media-amazon.com/images/M/MV5BZTI0NGM2OGYtNzVmMi00NGQ2LTk2MDAtN2RmYjIzMGRkZGYxXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
     }
   ]
 }

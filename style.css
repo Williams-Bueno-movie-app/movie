@@ -1,8 +1,77 @@
-
-body {
-    background:#1e1e26;
+#labelPoster {
+    padding: 10px;
 }
 
+.addMovieHereTitle {
+    font-family: "The Augusta", sans-serif;
+    color: #D77258;
+}
+.navbar-brand {
+    font-family: "The Augusta", sans-serif;
+    color: #D77258; !important;
+    font-size: 50px;
+}
+
+
+.card-container {
+    display: flex;
+    justify-content: space-between; /* Adjust as needed */
+    align-items: center; /* Align vertically */
+    margin: 20px auto; /* Adjust margin as needed */
+}
+
+
+img {
+    width: 300px;
+    height: 450px;
+}
+div.card {
+    width: 350px;
+    height: 600px;
+}
+div.card-body {
+    width: 350px;
+    height: 600px;
+    border: solid #D77258 5px
+
+}
+body {
+    background-color:#1e1e26;
+}
+.top-three {
+    font-family: "The Augusta", sans-serif;
+    font-size: 35px;
+    padding: 10px;
+    margin: 20px;
+    color: #D77258;
+}
+
+.movie1 {
+    box-shadow: 10px 10px 5px black;
+    margin-bottom: 30px;
+}
+.movie2 {
+    box-shadow: 10px 10px 5px black;
+    margin-bottom: 30px;
+}
+.movie3 {
+    box-shadow: 10px 10px 5px black;
+    margin-bottom: 30px;
+}
+.navbar-brand {
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    height: 50%;
+    font-size: 55px !important;
+    font-family: "The Augusta", sans-serif;
+    color: #D77258 !important;
+}
+
+#movieInput {
+    padding: 0;
+    margin: 0;
+}
 .mypopcorn {
     padding:20px;
 }
